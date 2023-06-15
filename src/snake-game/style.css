@@ -7,20 +7,38 @@
 .playing-field {
     width: 700px;
     height: 700px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    /* top: 50%;
+    left: 50%; */
+    /* transform: translate(-50%, -50%); */
     background-image: url("images/1-step-squere.svg");
     background-size: 20px;
 }
 
-#snake {
+#snakeHead {
     width: 20px;
     height: 20px;
-    top: 300px;
+    bottom: 200px;
     left: 300px;
     background-color: plum;
     position: absolute;
 }
+
+#snake-segment1 {
+    width: 20px;
+    height: 20px;
+    bottom: 220px;
+    left: 300px;
+    background-color: plum;
+    position: absolute;
+} 
+
+#snake-segment2 {
+    width: 20px;
+    height: 20px;
+    bottom: 240px;
+    left: 300px;
+    background-color: plum;
+    position: absolute;
+} 
 

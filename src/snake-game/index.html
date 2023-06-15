@@ -6,20 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    <script src="snakeGame.js"></script>
 </head>
 <body>
     <div class="game">
-        <button class ="button-start" onclick="moving()">Start</button>
+        <button class ="button-start" onclick="startSnakeGame()">Start</button>
         <div class="playing-field">
-            <div id="snake"></div>
+            <div id="snake-container">
+                <div id="snakeHead"></div>
+                <div id="snake-segment1"></div>
+                <div id="snake-segment2"></div>
+            </div> 
         </div>
-
-
-
-
     </div>
 
-    <script src="script.js"></script>
     
+
 </body>
 </html>
