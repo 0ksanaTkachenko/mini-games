@@ -24,21 +24,19 @@
     position: absolute;
 }
 
-#snake-segment1 {
+.snake-segment {
     width: 20px;
     height: 20px;
+    background-color: plum;
+    position: absolute;
+}
+
+#snake-segment1 {
     bottom: 220px;
     left: 300px;
-    background-color: plum;
-    position: absolute;
-} 
+}
 
 #snake-segment2 {
-    width: 20px;
-    height: 20px;
     bottom: 240px;
     left: 300px;
-    background-color: plum;
-    position: absolute;
-} 
-
+}

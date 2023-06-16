@@ -1,20 +1,3 @@
-// import createSnakeSegments from './snakeElements.js';
-
-// const createSnakeSegments = (snakeLength) => {
-//   const snakeContainer = document.getElementById('snake-container');
-//   const snakeSegments = [];
-
-//   for (let i = 0; i < snakeLength; i++) {
-//     const segment = document.createElement('div');
-//     segment.classList.add('snake-segment');
-//     snakeContainer.appendChild(segment);
-//     snakeSegments.push({ element: segment });
-//     console.log(snakeSegments);
-//   }
-
-//   return snakeSegments;
-// };
-
 const startSnakeGame = () => {
   let snake = {
     snakeHead: {
@@ -43,8 +26,6 @@ const startSnakeGame = () => {
 
   let segmentSize = 20;
 
-  // const snakeSegments = createSnakeSegments(snakeLength);
-
   let direction = 'down';
 
   document.addEventListener('keydown', (event) => {
@@ -58,8 +39,6 @@ const startSnakeGame = () => {
       direction = 'right';
     }
   });
-
-  let snakeLength = 3;
 
   const moveSnake = () => {
     let prevXValue = snake.snakeHead.xPosition;
@@ -103,28 +82,33 @@ const startSnakeGame = () => {
     }
   };
 
+  let snakeLength = 3;
+
+  const createSnakeSegment = () => {
+    const snakeContainer = document.getElementById('snake-container');
+    const elem = document.createElement('div');
+    snakeContainer.appendChild(elem);
+    elem.setAttribute('id', 'snake-segment' + snakeLength);
+    elem.classList.add('snake-segment');
+  };
+
+  const MakeSnakeBigger = () => {
+    createSnakeSegment();
+
+    let prevSnakeIndex = 'segment' + (snakeLength - 1);
+    let prevSnakeElem = snake[prevSnakeIndex];
+
+    let name = 'segment' + snakeLength;
+    snake[name] = {
+      element: document.getElementById('snake-segment' + snakeLength),
+      xPosition: prevSnakeElem.xPosition,
+      yPosition: prevSnakeElem.yPosition + 1,
+    };
+
+    snakeLength += 1;
+  };
+
   setInterval(() => {
     moveSnake();
   }, 150);
 };
-
-// const createSnakeSegments = (snakeLength) => {
-//   const snakeContainer = document.getElementById('snake-container');
-//   const snakeSegments = [];
-
-//   for (let i = 0; i < snakeLength; i += 1) {
-//     const elem = document.createElement('div');
-
-//     let segment = {
-//       element: elem,
-//       xPosition: 30,
-//       yPosition: 20,
-//     };
-
-//     segment.classList.add('snake-segment');
-//     snakeSegments.push(segment);
-//     snakeContainer.appendChild(segment);
-//   }
-
-//   return snakeSegments;
-// };
