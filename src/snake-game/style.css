@@ -40,3 +40,12 @@
     bottom: 240px;
     left: 300px;
 }
+
+.berry {
+    width: 20px;
+    height: 20px;
+    bottom: 250px;
+    left: 160px;
+    background-color: rgb(199, 214, 32);
+    position: absolute;
+}

@@ -108,7 +108,43 @@ const startSnakeGame = () => {
     snakeLength += 1;
   };
 
+  let fruitExists = false;
+
+  let RandomBerry = {};
+
+  const spawnRandomBerry = () => {
+    RandomBerry.xPosition = Math.floor(Math.random() * 35);
+    RandomBerry.yPosition = Math.floor(Math.random() * 35);
+
+    const berryContainer = document.getElementById('berry-container');
+    const elem = document.createElement('div');
+    berryContainer.appendChild(elem);
+    elem.classList.add('berry');
+
+    elem.style.left = RandomBerry.xPosition * 20 + 'px';
+    elem.style.bottom = RandomBerry.yPosition * 20 + 'px';
+    fruitExists = true;
+  };
+
+  const eatFruit = () => {
+    if (
+      snake.snakeHead.xPosition === RandomBerry.xPosition &&
+      snake.snakeHead.yPosition === RandomBerry.yPosition
+    ) {
+      MakeSnakeBigger();
+      RandomBerry = {};
+      const element = document.getElementsByClassName('berry')[0];
+      element.remove();
+
+      fruitExists = false;
+    }
+  };
+
   setInterval(() => {
     moveSnake();
+    eatFruit();
+    if (!fruitExists) {
+      spawnRandomBerry();
+    }
   }, 150);
 };
