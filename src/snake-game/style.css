@@ -8,11 +8,22 @@
     width: 700px;
     height: 700px;
     position: relative;
-    /* top: 50%;
-    left: 50%; */
-    /* transform: translate(-50%, -50%); */
     background-image: url("images/1-step-squere.svg");
     background-size: 20px;
+}
+
+#game-over {
+    width: 700px;
+    height: 700px;
+    background-color: black;
+    position: absolute;
+    z-index: 2;
+    display: none;
+}
+
+#game-over-text {
+    color: white;
+    font-size: 100px;
 }
 
 #snakeHead {
@@ -22,6 +33,7 @@
     left: 300px;
     background-color: plum;
     position: absolute;
+    
 }
 
 .snake-segment {
@@ -29,6 +41,7 @@
     height: 20px;
     background-color: plum;
     position: absolute;
+    
 }
 
 #snake-segment1 {

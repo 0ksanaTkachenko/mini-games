@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
-    <script src="snakeGame.js"></script>
+    <script type="module" src="snakeGame.js"></script>
 </head>
 <body>
     <div class="game">
-        <button class ="button-start" onclick="startSnakeGame()">Start</button>
+        <button id="startButton" class="button-start">Start</button>
+        
         <div class="playing-field">
+            <div id="game-over">
+                <div id="game-over-text">Game over!</div>
+            </div>
             <div id="snake-container">
                 <div id="snakeHead"></div>
                 <div id="snake-segment1" class="snake-segment"></div>
