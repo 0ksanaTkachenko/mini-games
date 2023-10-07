@@ -2,6 +2,7 @@ import { moveSnake } from './moveSnake.js';
 import { spawnRandomBerry } from './berrySpawn.js';
 import { eatFruit } from './eatFruit.js';
 import { snakeCrashedIntoItself } from './snakeCrashed.js';
+import { resetSnakeGame } from './tryAgain.js';
 
 let flags = {
   snakeLength: 3,
@@ -9,16 +10,47 @@ let flags = {
   randomBerry: {},
   direction: 'down',
   isGameRunning: false,
-};
+  PlayingFieldSize: 34,
+  positionOfTheSnakeHead: {
+    xPosition: 15,
+    yPosition: 10,
+  },
+}; // Флаги которые регулируют игру
+
+let snake = {
+  snakeHead: {
+    element: document.getElementById('snakeHead'),
+    xPosition: flags.positionOfTheSnakeHead.xPosition,
+    yPosition: flags.positionOfTheSnakeHead.yPosition,
+  },
+  segment1: {
+    element: document.getElementById('snake-segment1'),
+    xPosition: flags.positionOfTheSnakeHead.xPosition,
+    yPosition: flags.positionOfTheSnakeHead.yPosition + 1,
+  },
+  segment2: {
+    element: document.getElementById('snake-segment2'),
+    xPosition: flags.positionOfTheSnakeHead.xPosition,
+    yPosition: flags.positionOfTheSnakeHead.yPosition + 2,
+  },
+}; // Начальный вид змейки
 
 const startButton = document.getElementById('startButton');
 
+let gameInterval;
+
+const start = () => {
+  gameInterval = setInterval(() => {
+    snakeGame();
+  }, 150);
+};
+
 startButton.addEventListener('click', () => {
   if (!flags.isGameRunning) {
-    startSnakeGame();
     flags.isGameRunning = true;
+    start();
   }
-});
+}); //Начало игры при нажатии кнопки старт
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowDown') {
@@ -30,36 +62,46 @@ document.addEventListener('keydown', (event) => {
   } else if (event.key === 'ArrowRight') {
     flags.direction = 'right';
   }
-});
+}); // движение змейки которое задается стрелочками на клавиатуре
 
-let snake = {
-  snakeHead: {
-    element: document.getElementById('snakeHead'),
-    xPosition: 15,
-    yPosition: 10,
-  },
-  segment1: {
-    element: document.getElementById('snake-segment1'),
-    xPosition: 15,
-    yPosition: 11,
-  },
-  segment2: {
-    element: document.getElementById('snake-segment2'),
-    xPosition: 15,
-    yPosition: 12,
-  },
+const snakeGame = () => {
+  if (flags.isGameRunning) {
+    moveSnake(snake, flags);
+  } // движение змейки
+
+  if (!flags.fruitExists) {
+    spawnRandomBerry(flags);
+    flags.fruitExists = true;
+  } // появление ягод
+
+  eatFruit(snake, flags); // проверка съедена ли ягода, удаление ее с поля если она съедена
+  snakeCrashedIntoItself(flags, snake); // Проверка не врезалась ли змея сама в себя
 };
 
-const startSnakeGame = () => {
-  setInterval(() => {
-    moveSnake(snake, flags);
+const tryAgainButton = document.getElementById('buttonTryAgain');
+let tryAgainHandlerAdded = false;
 
-    if (!flags.fruitExists) {
-      spawnRandomBerry(flags);
-      flags.fruitExists = true;
-    }
+tryAgainButton.addEventListener('click', () => {
+  if (!tryAgainHandlerAdded) {
+    tryAgainHandlerAdded = true;
+    tryAgainHandler();
+  }
+});
 
-    eatFruit(snake, flags);
-    snakeCrashedIntoItself(flags, snake);
-  }, 150);
+const tryAgainHandler = () => {
+  if (!flags.isGameRunning) {
+    const gameOverField = document.getElementById('game-over');
+    gameOverField.style.display = 'none';
+    buttonTryAgain.style.display = 'none';
+
+    flags.isGameRunning = true;
+    tryAgainHandlerAdded = false;
+
+    resetSnakeGame(flags, snake);
+
+    clearInterval(gameInterval);
+    gameInterval = setInterval(() => {
+      snakeGame();
+    }, 150);
+  }
 };

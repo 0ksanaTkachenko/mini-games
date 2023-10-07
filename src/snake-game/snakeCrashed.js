@@ -1,7 +1,8 @@
 const gameOver = () => {
   const gameOverField = document.getElementById('game-over');
   gameOverField.style.display = 'block';
-};
+  buttonTryAgain.style.display = 'block';
+}; // Появление надписи игра закончена при роигрыше
 
 export const snakeCrashedIntoItself = (flags, snake) => {
   for (let i = 1; i <= flags.snakeLength - 1; i += 1) {
@@ -13,6 +14,7 @@ export const snakeCrashedIntoItself = (flags, snake) => {
       snake.snakeHead.yPosition === elemYPosition
     ) {
       gameOver();
-    }
+      flags.isGameRunning = false;
+    } // Остановить игру если змея врезяется сама в себя
   }
 };
