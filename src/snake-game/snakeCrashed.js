@@ -1,7 +1,12 @@
+import { resetSnakeGame } from './tryAgain.js';
+
 const gameOver = () => {
-  const gameOverField = document.getElementById('game-over');
-  gameOverField.style.display = 'block';
+  const gameField = document.getElementById('playingField');
+  const buttonTryAgain = document.getElementById('buttonTryAgain');
+  const gameOverText = document.getElementById('game-over-text');
+  gameField.style.display = 'none';
   buttonTryAgain.style.display = 'block';
+  gameOverText.style.display = 'block';
 }; // Появление надписи игра закончена при роигрыше
 
 export const snakeCrashedIntoItself = (flags, snake) => {
@@ -14,6 +19,7 @@ export const snakeCrashedIntoItself = (flags, snake) => {
       snake.snakeHead.yPosition === elemYPosition
     ) {
       gameOver();
+      resetSnakeGame(flags);
       flags.isGameRunning = false;
     } // Остановить игру если змея врезяется сама в себя
   }

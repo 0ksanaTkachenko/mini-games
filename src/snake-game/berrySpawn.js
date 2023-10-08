@@ -6,8 +6,8 @@ export const spawnRandomBerry = (flags) => {
       existingBerry.remove();
     }
 
-    flags.randomBerry.xPosition = Math.floor(Math.random() * 35); //Появление ягоды в пределах игрового поля
-    flags.randomBerry.yPosition = Math.floor(Math.random() * 35);
+    flags.randomBerry.xPosition = Math.floor(Math.random() * flags.PlayingFieldSize); //Появление ягоды в пределах игрового поля
+    flags.randomBerry.yPosition = Math.floor(Math.random() * flags.PlayingFieldSize);
 
     const berryContainer = document.getElementById('berry-container');
     const elem = document.createElement('div');

@@ -9,26 +9,28 @@
     <script type="module" src="snakeGame.js"></script>
 </head>
 <body>
-    <div class="game">
-        <button id="startButton" class="button-start">Start</button>
-        
-        <div class="playing-field">
-            <div id="game-over">
-                <div id="game-over-text">Game over!</div>
+    <header class="header-container">
+        <h1 class="header-text">RELAX GAMES</h1>
+    </header>
+    <main class="main-container">
+        <div class="newspaper-container">
+            <div id="score">Score: 0</div>
+            <div class="game">
+                <div id="start-game-field">
+                    <button id="startButton" class="button-start">Start</button>
+                    <div id="game-over-text">Game over!</div>
+                    <button id="buttonTryAgain">TRY AGAIN</button>
+                </div>
+                <div class="playing-field" id = playingField>
+                    <div id="snake-container">
+                        <div id="snakeHead"></div>
+                        <div id="snake-segment1" class="snake-segment"></div>
+                        <div id="snake-segment2" class="snake-segment"></div>
+                    </div>
+                    <div id="berry-container"></div> 
+                </div>
             </div>
-            <button id="buttonTryAgain">
-                <div id="try-again-text">try-again</div>
-            </button>
-            <div id="snake-container">
-                <div id="snakeHead"></div>
-                <div id="snake-segment1" class="snake-segment"></div>
-                <div id="snake-segment2" class="snake-segment"></div>
-            </div>
-            <div id="berry-container"></div> 
         </div>
-    </div>
-
-    
-
+    </main>
 </body>
 </html>

@@ -2,7 +2,6 @@ import { moveSnake } from './moveSnake.js';
 import { spawnRandomBerry } from './berrySpawn.js';
 import { eatFruit } from './eatFruit.js';
 import { snakeCrashedIntoItself } from './snakeCrashed.js';
-import { resetSnakeGame } from './tryAgain.js';
 
 let flags = {
   snakeLength: 3,
@@ -10,7 +9,7 @@ let flags = {
   randomBerry: {},
   direction: 'down',
   isGameRunning: false,
-  PlayingFieldSize: 34,
+  PlayingFieldSize: 24,
   positionOfTheSnakeHead: {
     xPosition: 15,
     yPosition: 10,
@@ -36,20 +35,22 @@ let snake = {
 }; // Начальный вид змейки
 
 const startButton = document.getElementById('startButton');
+const gameField = document.getElementById('playingField');
 
 let gameInterval;
 
 const start = () => {
+  gameField.style.display = 'block';
+  startButton.style.display = 'none';
+
   gameInterval = setInterval(() => {
     snakeGame();
   }, 150);
 };
 
 startButton.addEventListener('click', () => {
-  if (!flags.isGameRunning) {
-    flags.isGameRunning = true;
-    start();
-  }
+  flags.isGameRunning = true;
+  start();
 }); //Начало игры при нажатии кнопки старт
 
 document.addEventListener('keydown', (event) => {
@@ -79,26 +80,16 @@ const snakeGame = () => {
 };
 
 const tryAgainButton = document.getElementById('buttonTryAgain');
-let tryAgainHandlerAdded = false;
 
 tryAgainButton.addEventListener('click', () => {
-  if (!tryAgainHandlerAdded) {
-    tryAgainHandlerAdded = true;
-    tryAgainHandler();
-  }
+  flags.isGameRunning = true;
+  buttonTryAgain.style.display = 'none';
+  gameField.style.display = 'block';
+  tryAgainHandler();
 });
 
 const tryAgainHandler = () => {
   if (!flags.isGameRunning) {
-    const gameOverField = document.getElementById('game-over');
-    gameOverField.style.display = 'none';
-    buttonTryAgain.style.display = 'none';
-
-    flags.isGameRunning = true;
-    tryAgainHandlerAdded = false;
-
-    resetSnakeGame(flags, snake);
-
     clearInterval(gameInterval);
     gameInterval = setInterval(() => {
       snakeGame();

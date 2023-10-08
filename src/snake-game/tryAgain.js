@@ -1,4 +1,4 @@
-export const resetSnakeGame = (flags, snake) => {
+export const resetSnakeGame = (flags) => {
   //Возвращение всех измененных флагов к начальному состоянию
 
   flags.snakeLength = 3;

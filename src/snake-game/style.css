@@ -1,67 +1,120 @@
-.button-start {
-    width: 100px;
-    height: 100px;
-    background-color: blueviolet;
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+
+.header-text {
+    font-size: 40px;
+    color: #ccc7c0;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 850px;
+    background-color: #ccc7c0;
+  }
+
+.newspaper-container {
+    background-image: url("images/snake-game-newspaper-field.png");
+    width: 1100px;
+    height: 750px;
+    background-size: cover;
+    position: relative;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);  
+    border-left: 8px solid #e5e5e5;  
+    box-sizing: border-box;
+}
+
+#game-over-text {
+    color: rgb(0, 0, 0);
+    font-size: 60px;
+    position: absolute;
+    top: 10%; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 290px;
+    display: none; 
 }
 
 #buttonTryAgain {
-    width: 200px;
+    width: 250px;
     height: 100px;
-    background-color: rgba(255, 255, 255, 0.304);
-    display: none;
-    z-index: 3;
+    background-color: #7d7d7d;
+    color: #fff;
     position: absolute;
-    top: 40%;
+    bottom: 20%;
     left: 50%;
-    border: 3px solid rgb(255, 255, 255);
-    border-radius: 40%; 
-
     transform: translateX(-50%) scale(1);
     transform-origin: center;
-    transition: transform 0.2s;
+    transition: transform 0.2s; 
+    font-size: 20px;
+    border: 2px solid #000000;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    display: none;
 }
 
 #buttonTryAgain:hover {
     transform: translateX(-50%) scale(1.2);
 }
 
-#try-again-text {
-    color: rgb(255, 255, 255);
-    font-size: 35px;
-}
-
-.playing-field {
-    width: 700px;
-    height: 700px;
+.game {
+    top: 167px;
+    left: 32px;
+    width: 500px;
+    height: 500px;
     position: relative;
-    background-image: url("images/1-step-squere.svg");
+}
+
+#playingField {
+    width: 500px;
+    height: 500px; 
+    position: relative;
+    background-image: url("images/1-step-squere.png");
     background-size: 20px;
-}
-
-#game-over {
-    width: 700px;
-    height: 700px;
-    background-color: rgba(0, 0, 0, 0.51);
-    position: absolute;
-    z-index: 2;
     display: none;
+    z-index: 5;
 }
 
-#game-over-text {
-    color: white;
-    font-size: 70px;
+
+.button-start {
+    width: 250px;
+    height: 100px;
+    background-color: #7d7d7d;
+    color: #fff;
     position: absolute;
-    top: 20%; 
+    top: 40%;
     left: 50%;
-    transform: translateX(-50%); 
+    transform: translateX(-50%) scale(1);
+    transform-origin: center;
+    transition: transform 0.2s; 
+    font-size: 30px;
+    border: 2px solid #000000;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
 }
+
+.button-start:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+
 
 #snakeHead {
     width: 20px;
     height: 20px;
     bottom: 200px;
     left: 300px;
-    background-color: plum;
+    background-color: #7d7d7d;
     position: absolute;
     
 }
@@ -69,7 +122,7 @@
 .snake-segment {
     width: 20px;
     height: 20px;
-    background-color: plum;
+    background-color: #7d7d7d;
     position: absolute;
 }
 
@@ -88,6 +141,6 @@
     height: 20px;
     bottom: 250px;
     left: 160px;
-    background-color: rgb(199, 214, 32);
+    background-color: #515050;
     position: absolute;
 }

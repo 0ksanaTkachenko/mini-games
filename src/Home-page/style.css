@@ -1,0 +1,40 @@
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border-bottom: 1px solid #ccc7c0;
+  margin-bottom: 40px;
+  
+}
+
+.header-text {
+    font-size: 40px;
+    color: #ccc7c0;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+  background-color: #ccc7c0;
+}
+
+.snake-game-container {
+    width: 450px;
+    height: 600px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);  
+    border-left: 8px solid #e5e5e5;  
+    box-sizing: border-box;
+    background-image: url("images/snake-game-newspaper.png");
+    background-size: cover;
+    position: relative;
+}
+
+.snakeGame-image {
+    position: relative;
+    top: 250px;
+    left: 50px;
+}
+
