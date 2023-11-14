@@ -6,8 +6,25 @@ export const spawnRandomBerry = (flags, snake) => {
       existingBerry.remove();
     }
 
-    flags.randomBerry.xPosition = Math.floor(Math.random() * flags.PlayingFieldSize); //Появление ягоды в пределах игрового поля
-    flags.randomBerry.yPosition = Math.floor(Math.random() * flags.PlayingFieldSize);
+    let newBerryX, newBerryY;
+
+    const settingBerryCoordinates = () => {
+      newBerryX = Math.floor(Math.random() * flags.PlayingFieldSize);
+      newBerryY = Math.floor(Math.random() * flags.PlayingFieldSize);
+
+      for (let i = 1; i < flags.snakeLength; i += 1) {
+        let currentSegment = snake[`segment${i}`];
+        if (newBerryX === currentSegment.xPosition && newBerryY === currentSegment.yPosition) {
+          settingBerryCoordinates();
+          return;
+        }
+      }
+    };
+
+    settingBerryCoordinates();
+
+    flags.randomBerry.xPosition = newBerryX;
+    flags.randomBerry.yPosition = newBerryY;
 
     const berryContainer = document.getElementById('berry-container');
     const elem = document.createElement('div');
