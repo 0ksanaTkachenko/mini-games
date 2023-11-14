@@ -9,6 +9,7 @@ export const resetSnakeGame = (flags) => {
     xPosition: 15,
     yPosition: 10,
   };
+  flags.score = 0;
 
   //Удалить все сегмены которые появились во время прошлой игры, исключая начальные сегменты змеи
 

@@ -32,9 +32,11 @@
     position: relative;
 }
 
-.snakeGame-image {
-    position: relative;
-    top: 250px;
-    left: 50px;
+.snake-video {
+  position: relative;
+  top: 176px;
+  left: 32px;
+  width: 262px;
 }
+
 

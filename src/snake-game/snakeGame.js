@@ -2,6 +2,7 @@ import { moveSnake } from './moveSnake.js';
 import { spawnRandomBerry } from './berrySpawn.js';
 import { eatFruit } from './eatFruit.js';
 import { snakeCrashedIntoItself } from './snakeCrashed.js';
+import { updateScore } from './score.js';
 
 let flags = {
   snakeLength: 3,
@@ -14,6 +15,7 @@ let flags = {
     xPosition: 15,
     yPosition: 10,
   },
+  score: 0,
 }; // Флаги которые регулируют игру
 
 let snake = {
@@ -37,12 +39,15 @@ let snake = {
 const startButton = document.getElementById('startButton');
 const gameField = document.getElementById('playingField');
 
+const buttonTryAgain = document.getElementById('buttonTryAgain');
+const gameOverText = document.getElementById('game-over-text');
+const gameOverBestScore = document.getElementById('game-over-best-score');
+
 let gameInterval;
 
 const start = () => {
   gameField.style.display = 'block';
   startButton.style.display = 'none';
-
   gameInterval = setInterval(() => {
     snakeGame();
   }, 150);
@@ -71,7 +76,7 @@ const snakeGame = () => {
   } // движение змейки
 
   if (!flags.fruitExists) {
-    spawnRandomBerry(flags);
+    spawnRandomBerry(flags, snake);
     flags.fruitExists = true;
   } // появление ягод
 
@@ -85,6 +90,9 @@ tryAgainButton.addEventListener('click', () => {
   flags.isGameRunning = true;
   buttonTryAgain.style.display = 'none';
   gameField.style.display = 'block';
+  gameOverText.style.display = 'none';
+  gameOverBestScore.style.display = 'none';
+  updateScore(flags.score);
   tryAgainHandler();
 });
 

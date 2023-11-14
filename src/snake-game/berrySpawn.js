@@ -1,4 +1,4 @@
-export const spawnRandomBerry = (flags) => {
+export const spawnRandomBerry = (flags, snake) => {
   if (flags.isGameRunning) {
     // Проверяем, существует ли ягода, и если да, удаляем ее
     const existingBerry = document.querySelector('.berry');

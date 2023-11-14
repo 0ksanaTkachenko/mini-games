@@ -1,3 +1,5 @@
+import { updateScore } from './score.js';
+
 const MakeSnakeBigger = (snake, flags) => {
   const snakeContainer = document.getElementById('snake-container');
   const htmlElem = document.createElement('div');
@@ -22,6 +24,8 @@ const MakeSnakeBigger = (snake, flags) => {
   elem.style.left = snake[name].xPosition * 20 + 'px';
 
   flags.snakeLength += 1;
+  flags.score += 1;
+  updateScore(flags.score);
 }; // Функция увеличения змею на 1 элемент
 
 export const eatFruit = (snake, flags) => {
